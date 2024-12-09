@@ -21,7 +21,7 @@ class DataIngestion:
     
     def initiate_data_ingestion(self):
         try:
-            df = read_sql_data()
+            df = read_sql_data()            
             logging.info('reading from mysql database')
             os.makedirs(os.path.dirname(DataIngestionConfig.train_data_path), exist_ok= True)
             df.to_csv(self.ingestion_config.raw_path,index= False, header= True)
