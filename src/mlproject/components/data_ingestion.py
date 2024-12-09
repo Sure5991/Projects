@@ -26,8 +26,8 @@ class DataIngestion:
             os.makedirs(os.path.dirname(DataIngestionConfig.train_data_path), exist_ok= True)
             df.to_csv(self.ingestion_config.raw_path,index= False, header= True)
             trainset,testset = train_test_split(df,test_size=0.2,random_state=42, stratify= df.loan_status) # loan status is class label
-            df.to_csv(self.ingestion_config.train_data_path,index= False, header= True)
-            df.to_csv(self.ingestion_config.test_data_path,index= False, header= True)
+            trainset.to_csv(self.ingestion_config.train_data_path,index= False, header= True)
+            testset.to_csv(self.ingestion_config.test_data_path,index= False, header= True)
             logging.info('data ingestion is completed')
             return (
                 self.ingestion_config.train_data_path,
